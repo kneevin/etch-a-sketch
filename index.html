@@ -10,10 +10,20 @@
 
 <body>
     <div class='main-container'>
-        <div class='title'>Etch-a-Sketch</div>
-        <div class='btn-container'><button type='button'>Reset</button></div>
-        <div class='grid-container'>
-
+        <div class='title-separator'>
+            <div class='title'>Etch-a-Sketch</div>
+            <div>
+                <div class='non-grid-container sidebar'>
+                    <button type='button' class='reset-btn'>Reset</button>
+                    <div class='size-choicing'>
+                        <label for='size'>Grid Size</label><input type='text' id='size'>
+                    </div>
+                    <div class='color-choicing'>
+                        <label for='Color'>Paint Color</label><input type='color' id='Color'>
+                    </div>
+                </div>
+                <div class='grid-container'></div>
+            </div>
         </div>
     </div>
 </body>
