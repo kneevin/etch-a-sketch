@@ -10,27 +10,25 @@
 
 <body>
     <div class='main-container'>
-        <div class='title-separator'>
-            <div class='title'>Etch-a-Sketch</div>
-            <div>
-                <div class='non-grid-container'>
-                    <div class='sidebar'>
-                        <div class='color-choicing'>
-                            <label for='Color'>Paint Color</label><input type='color' id='Color'>
-                        </div>
-                        <button type='button' class='reset-btn'>Reset</button>
-                        <button type='button' class='eraser-btn'>Erase</button>
-                        <div class='size-choicing'>
-                            <label for='grid-slider'>Grid Size</label>
-                            <input type='range' min='2' max='100' value='50' id='grid-slider'>
-                            <div class='size-preview'>50</div>
-                            <button type='button' class='confirm-size'>Change</button>
-                        </div>
+        <div class='title'>Etch-a-Sketch</div>
+        <div class='non-title'>
+            <div class='non-grid-container'>
+                <div class='sidebar'>
+                    <div class='color-choicing'>
+                        <label for='Color'>Paint Color</label><input type='color' id='Color'>
+                    </div>
+                    <button type='button' class='reset-btn'>Reset</button>
+                    <button type='button' class='eraser-btn'>Erase</button>
+                    <div class='size-choicing'>
+                        <label for='grid-slider'>Grid Size</label>
+                        <input type='range' min='2' max='100' value='50' id='grid-slider'>
+                        <div class='size-preview'>50</div>
+                        <button type='button' class='confirm-size'>Change</button>
                     </div>
                 </div>
-                <div class='grid-container'>
-                    <!-- grid boxes go in here -->
-                </div>
+            </div>
+            <div class='grid-container'>
+                <!-- grid boxes go in here -->
             </div>
         </div>
     </div>
