@@ -11,6 +11,8 @@
 .grid-container {
     display: flex;
     flex-flow: column;
-    height: 50vh;
-    width: 50vh;
+    height: 600px;
+    width: 600px;
 }
+
+/* styling and positioning of html objects */
