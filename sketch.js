@@ -15,6 +15,7 @@ function createRow(num) {
 }
 
 // creates a grid of user chosen size n, NxN
+// also returns the grid object so it can be passed to other functions
 function createGrid(userSize) {
     let grid = document.querySelector('.grid-container');
     for (let i = 0; i < userSize; i++) {
@@ -24,6 +25,18 @@ function createGrid(userSize) {
             row.append(createSquare());
         }
     }
+    return grid;
 }
+
+// functionality of the color slider
+function colorFunctionality(){
+    return
+}
+
+// adds listeners to the grid so that it can be drawn on
+function addDrawing(grid, color) {
+    return
+}
+
 
 createGrid(20)
