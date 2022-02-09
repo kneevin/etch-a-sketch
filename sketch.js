@@ -26,4 +26,4 @@ function createGrid(userSize) {
     }
 }
 
-createGrid(4)
+createGrid(20)

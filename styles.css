@@ -1,9 +1,16 @@
 .noncolored-square {
-    border: 2px solid black;
-    height: 50px;
-    width: 50px;
+    border: 1px solid black;
+    flex-grow: 1;
 }
 
 .row {
     display: flex;
+    flex-grow: 1;
+}
+
+.grid-container {
+    display: flex;
+    flex-flow: column;
+    height: 50vh;
+    width: 50vh;
 }
