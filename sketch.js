@@ -14,10 +14,18 @@ function createRow(num) {
     return row;
 }
 
+// helper function to get rid of all previous nodes
+function removeAllChildNodes(parent){
+    while(parent.firstChild){
+        parent.removeChild(parent.firstChild);
+    }
+}
+
 // creates a grid of user chosen size n, NxN
 // also returns the grid object so it can be passed to other functions
 function createGrid(userSize) {
     let grid = document.querySelector('.grid-container');
+    removeAllChildNodes(grid);
     for (let i = 0; i < userSize; i++) {
         grid.appendChild(createRow(i));
         let row = document.querySelector(`.row-${i}`);
@@ -28,15 +36,43 @@ function createGrid(userSize) {
     return grid;
 }
 
-// functionality of the color slider
-function colorFunctionality(){
+// updates the display of the current grid size
+function updateGridNumber(val){
+    let displayedVal = document.querySelector('.size-preview');
+    displayedVal.textContent = val
+}
+
+
+// updates all values that result from slider being adjusted
+function updateFromSlider(){
+    val = this.value;
+    createGrid(val);
+    updateGridNumber(val);
+}
+
+// adds functionality to grid sizing
+function gridSizing() {
+    let slider = document.querySelector('#grid-slider');
+    slider.addEventListener('click', updateFromSlider);
+}
+
+// functionality of the color picker
+function colorFunctionality() {
     return
 }
+
+// click-n-drag listeners to the squares
+
+// hover listeners to the squres
 
 // adds listeners to the grid so that it can be drawn on
-function addDrawing(grid, color) {
+function addDrawing(grid, color, listener) {
     return
 }
 
+function main() {
+    createGrid(10)
+    gridSizing()
+}
 
-createGrid(20)
+main()
