@@ -64,12 +64,21 @@ function gridSliderSizing() {
     sliderConfirm.addEventListener('click', updateGridFromSlider); // for when the slider size is confirmed
 }
 
+// removes all event listener from all squares
+function removeDrawingListenersFromAll() {
+    let grid = document.querySelectorAll('.noncolored-square');
+    grid.forEach((square) => { square.replaceWith(square.cloneNode(true)); })
+}
+
 // click-n-drag listeners to the squares
+// so when the user 'clicks and drag', the boxes need to do as follows:
+// when the user 'clicks', turns all the box listeners into 'hover' as the user
+// has clicked down, also add the event listener of 'mouseup' signifying the user has
+// released their mouse, thus turning all box listeners back into 'clicks'
 function clicknDrag() {
     color = document.querySelector('#Color');
     this.style.backgroundColor = color.value;
-    this.classList.add('colored');
-    this.removeEventListener('click', clicknDrag)
+    this.removeEventListener('mousedown', clicknDrag)
 }
 
 // hover listeners to the squares (the default)
@@ -82,48 +91,40 @@ function hoverDrawing() {
     this.removeEventListener('mouseover', hoverDrawing);
 }
 
-// adds listeners to the grid so that it can be drawn on
-function addDrawingListener(coloringListener) {
+// helper function that adds listeners with event type to squares w/o the class 'colored'
+function squareAddEventListeners(mouseEvent, eventListener) {
     let grid = document.querySelectorAll('.noncolored-square');
     grid.forEach((square) => {
-        // removing all current listeners
-        square.removeEventListener('mouseover', hoverDrawing);
-        square.removeEventListener('click', clicknDrag);
-        // if the current square is already colored, continue to next square
         if (!square.classList.contains('colored')) {
-            if (coloringListener == hoverDrawing) {
-                listenerType = 'mouseover';
-            } else if (coloringListener == clicknDrag) {
-                listenerType = 'click';
-            }
-            console.log(listenerType)
-            square.addEventListener(listenerType, coloringListener);
+            square.addEventListener(mouseEvent, eventListener);
         } else {
             return;
-        };
-    });
+        }
+    })
 }
 
 // adds the hover option functionality
 function addHoverOption() {
     hoverBtn = document.querySelector('.hover-option');
     hoverBtn.addEventListener('click', () => {
-        addDrawingListener(hoverDrawing);
+        removeDrawingListenersFromAll(); // first removes all listeners
+        squareAddEventListeners('mouseover', hoverDrawing); // then adds hover listeners to all non-colored squares
     });
 }
 
 // adds the click-n-drag option functionality
 function addClicknDrag() {
     dragBtn = document.querySelector('.click-option');
-    dragBtn.addEventListener('click', () => {
-        addDrawingListener(clicknDrag);
+    dragBtn.addEventListener('mousedown', () => {
+        removeDrawingListenersFromColored();
     });
 }
 
 function main() {
     createGrid(10);
     gridSliderSizing(); // functionality of grid slider
-    addDrawingListener(hoverDrawing); // adds the default hover drawing listeners
+    // by default, adds hover drawing event listener
+    squareAddEventListeners('mouseover', hoverDrawing);
     addHoverOption();
     addClicknDrag();
 }
