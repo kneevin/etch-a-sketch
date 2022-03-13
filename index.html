@@ -22,9 +22,16 @@
                     <button type='button' class='eraser-btn'>Erase</button>
                     <button type='button' class='grid-btn'>Grid Toggle</button>
                     <div class='size-choicing'>
-                        <label for='grid-slider'>Grid Size</label>
-                        <input type='range' min='2' max='100' value='10' id='grid-slider'>
-                        <div class='size-preview'>10</div>
+                        <div class='grid-section'>
+                            <label for='grid-slider'>Grid Size Slider: <a class='slider-preview'>10</a></label>
+                            <input type='range' min='2' max='100' value='10' id='grid-slider'>
+                            <button type='button' class='grid-confirm'>Confirm</button>
+                        </div>
+                        <div class='grid-manual-input'>
+                            <label for='grid-number'>Grid Size Manual</label>
+                            <input type='number' id='grid-number'>
+                        </div>
+                        <div class='size-header'>Current Size: <a class='size-preview'>10</a></div>
                     </div>
                     <div class='paint-brush-option'>
                         <div class='paint-label'>Paintbrush Options</div>

@@ -15,8 +15,8 @@ function createRow(num) {
 }
 
 // helper function to get rid of all previous nodes
-function removeAllChildNodes(parent){
-    while(parent.firstChild){
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
@@ -33,27 +33,35 @@ function createGrid(userSize) {
             row.append(createSquare());
         }
     }
+    updateGridNumber(userSize)
     return grid;
 }
 
 // updates the display of the current grid size
-function updateGridNumber(val){
+function updateGridNumber(val) {
     let displayedVal = document.querySelector('.size-preview');
     displayedVal.textContent = val
 }
 
 
 // updates all values that result from slider being adjusted
-function updateFromSlider(){
-    val = this.value;
-    createGrid(val);
-    updateGridNumber(val);
+function updateGridFromSlider() {
+    val = document.querySelector('.slider-preview');
+    createGrid(val.textContent);
+}
+
+// previews the size from slider
+function updateSliderPreview(){
+    preview = document.querySelector('.slider-preview');
+    preview.textContent = this.value;
 }
 
 // adds functionality to grid sizing
 function gridSizing() {
     let slider = document.querySelector('#grid-slider');
-    slider.addEventListener('click', updateFromSlider);
+    let sliderConfirm = document.querySelector('.grid-confirm');
+    slider.addEventListener('input', updateSliderPreview); // for when the slider is only being dragged
+    sliderConfirm.addEventListener('click', updateGridFromSlider);
 }
 
 // functionality of the color picker

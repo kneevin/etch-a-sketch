@@ -3,6 +3,10 @@
     flex-grow: 1;
 }
 
+.noncolored-square + .noncolored-square{
+    border-left: 0;
+}
+
 .row {
     display: flex;
     flex-grow: 1;
@@ -31,14 +35,21 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
 .non-title{
     display: flex;
+    gap: 10px;
 }
 
 .sidebar{
     display: flex;
     flex-direction: column;
     height: 600px;
+}
+
+.size-choicing{
+    display: flex;
+    flex-direction: column;
 }
