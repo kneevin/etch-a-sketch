@@ -70,27 +70,6 @@ function removeDrawingListenersFromAll() {
     grid.forEach((square) => { square.replaceWith(square.cloneNode(true)); })
 }
 
-// click-n-drag listeners to the squares
-// so when the user 'clicks and drag', the boxes need to do as follows:
-// when the user 'clicks', turns all the box listeners into 'hover' as the user
-// has clicked down, also add the event listener of 'mouseup' signifying the user has
-// released their mouse, thus turning all box listeners back into 'clicks'
-function clicknDrag() {
-    color = document.querySelector('#Color');
-    this.style.backgroundColor = color.value;
-    this.removeEventListener('mousedown', clicknDrag)
-}
-
-// hover listeners to the squares (the default)
-function hoverDrawing() {
-    color = document.querySelector('#Color');
-    // console.log(color);
-    this.style.backgroundColor = color.value;
-    this.classList.add('colored')
-    // console.log(this.classList)
-    this.removeEventListener('mouseover', hoverDrawing);
-}
-
 // helper function that adds listeners with event type to squares w/o the class 'colored'
 function squareAddEventListeners(mouseEvent, eventListener) {
     let grid = document.querySelectorAll('.noncolored-square');
@@ -101,6 +80,30 @@ function squareAddEventListeners(mouseEvent, eventListener) {
             return;
         }
     })
+}
+
+// click-n-drag listeners to the squares
+// so when the user 'clicks and drag', the boxes need to do as follows:
+// when the user 'clicks', turns all the box listeners into 'hover' as the user
+// has clicked down, also add the event listener of 'mouseup' signifying the user has
+// released their mouse, thus turning all box listeners back into 'clicks'
+function clicknDrag() {
+    color = document.querySelector('#Color');
+    this.style.backgroundColor = color.value;
+    this.removeEventListener('mousedown', clicknDrag)
+    // then toggles on the hover
+    removeDrawingListenersFromAll();
+    squareAddEventListeners('mouseover', hoverDrawing);
+}
+
+// hover listeners to the squares (the default)
+function hoverDrawing() {
+    color = document.querySelector('#Color');
+    // console.log(color);
+    this.style.backgroundColor = color.value;
+    this.classList.add('colored')
+    // console.log(this.classList)
+    this.removeEventListener('mouseover', hoverDrawing);
 }
 
 // adds the hover option functionality
@@ -116,7 +119,8 @@ function addHoverOption() {
 function addClicknDrag() {
     dragBtn = document.querySelector('.click-option');
     dragBtn.addEventListener('mousedown', () => {
-        removeDrawingListenersFromColored();
+        removeDrawingListenersFromAll();
+        squareAddEventListeners('mousedown', clicknDrag);
     });
 }
 
