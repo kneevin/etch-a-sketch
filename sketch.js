@@ -34,7 +34,7 @@ function createGrid(userSize) {
         }
     }
     updateGridNumber(userSize)
-    return grid;
+    squareAddEventListeners(currentDrawingListener, currentDrawingOption);
 }
 
 // updates the display of the current grid size
@@ -90,10 +90,18 @@ function squareAddEventListeners(mouseEvent, eventListener) {
 function clicknDrag() {
     color = document.querySelector('#Color');
     this.style.backgroundColor = color.value;
+    this.classList.add('colored')
     this.removeEventListener('mousedown', clicknDrag)
     // then toggles on the hover
     removeDrawingListenersFromAll();
     squareAddEventListeners('mouseover', hoverDrawing);
+    // this is added to the document rather than the boxes because there's a case of the user's cursor might end up not on the boxes
+    document.onmouseup = documentDragUp;
+}
+
+function documentDragUp() {
+    removeDrawingListenersFromAll();
+    squareAddEventListeners('mousedown', clicknDrag);
 }
 
 // hover listeners to the squares (the default)
@@ -108,6 +116,8 @@ function hoverDrawing() {
 
 // adds the hover option functionality
 function addHoverOption() {
+    currentDrawingOption = hoverDrawing
+    currentDrawingListener = 'mouseover'
     hoverBtn = document.querySelector('.hover-option');
     hoverBtn.addEventListener('click', () => {
         removeDrawingListenersFromAll(); // first removes all listeners
@@ -117,6 +127,8 @@ function addHoverOption() {
 
 // adds the click-n-drag option functionality
 function addClicknDrag() {
+    currentDrawingOption = clicknDrag;
+    currentDrawingListener = 'mousedown'
     dragBtn = document.querySelector('.click-option');
     dragBtn.addEventListener('mousedown', () => {
         removeDrawingListenersFromAll();
@@ -124,11 +136,18 @@ function addClicknDrag() {
     });
 }
 
+function drag_handler() {
+    console.log('drag');
+}
+
+// global variable for current drawing option
+let currentDrawingOption = hoverDrawing;
+let currentDrawingListener = 'mouseover'
+
 function main() {
+    // by default, adds hover drawing event listener
     createGrid(10);
     gridSliderSizing(); // functionality of grid slider
-    // by default, adds hover drawing event listener
-    squareAddEventListeners('mouseover', hoverDrawing);
     addHoverOption();
     addClicknDrag();
 }
