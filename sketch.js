@@ -146,8 +146,29 @@ function toggleGridBorder() {
 
 // adds grid-box functionality, user can toggle whether the borders of the box are visible or not
 function addgridBoxToggle() {
-    gridToggleBtn = document.querySelector('.grid-btn');
+    let gridToggleBtn = document.querySelector('.grid-btn');
     gridToggleBtn.addEventListener('click', toggleGridBorder);
+}
+
+// erases entire board
+function addEraseBoard() {
+    let eraseBtn = document.querySelector('.eraser-btn');
+    eraseBtn.addEventListener('click', () => {
+        let currentSize = document.querySelector('.size-preview').textContent;
+        createGrid(currentSize);
+    })
+}
+
+// allows for manual size input
+function addManualSize() {
+    let manualInput = document.querySelector('#grid-number');
+    manualInput.addEventListener('keypress', (e) => {
+        if (e.key == 'Enter') { // if user presses enter
+            val = manualInput.value;
+            if (2 <= val && val <= 100) { createGrid(val); } // if value is between [2, 100]
+            manualInput.value = NaN; // clears the field
+        }
+    })
 }
 
 // global variable (respectively) for current drawing option, drawing listener, and whether gridboxes are displayed or not
@@ -162,6 +183,8 @@ function main() {
     addHoverOption();
     addClicknDrag();
     addgridBoxToggle();
+    addEraseBoard();
+    addManualSize();
 }
 
 main()

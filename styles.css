@@ -1,6 +1,6 @@
 .noncolored-square {
     border: 1px solid black;
-    box-sizing: border-box;
+    background-color: white;
     flex-grow: 1;
     /* allows user to not be able to select the boxes, thus causing a dragging bug */
     -ms-user-select: none;
@@ -24,9 +24,10 @@
 .grid-container {
     display: flex;
     flex-flow: column;
-    height: 700px;
-    width: 700px;
-    border: 1px solid black;
+    height: 705px;
+    width: 705px;
+    padding: 5px;
+    background-color: black;
 }
 
 /* positioning of html objects */
