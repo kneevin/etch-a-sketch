@@ -2,6 +2,7 @@
 function createSquare(side) {
     let square = document.createElement('div');
     square.classList.add('noncolored-square');
+    if (!currentGridBox) { square.classList.add('no-borders') }; // if grid box borders were disabled
     square.style.width = `${side}px`;
     square.style.height = `${side}px`;
     return square;
@@ -33,8 +34,9 @@ function createGrid(userSize) {
             row.append(createSquare());
         }
     }
+    // updating/adding all current situations 
     updateGridNumber(userSize)
-    squareAddEventListeners(currentDrawingListener, currentDrawingOption);
+    squareAddEventListeners(currentDrawingListener, currentDrawingOption); // adding current drawing option
 }
 
 // updates the display of the current grid size
@@ -136,13 +138,22 @@ function addClicknDrag() {
     });
 }
 
-function drag_handler() {
-    console.log('drag');
+function toggleGridBorder() {
+    currentGridBox = !currentGridBox
+    let grid = document.querySelectorAll('.noncolored-square');
+    grid.forEach((square) => { square.classList.toggle('no-borders') });
 }
 
-// global variable for current drawing option
+// adds grid-box functionality, user can toggle whether the borders of the box are visible or not
+function addgridBoxToggle() {
+    gridToggleBtn = document.querySelector('.grid-btn');
+    gridToggleBtn.addEventListener('click', toggleGridBorder);
+}
+
+// global variable (respectively) for current drawing option, drawing listener, and whether gridboxes are displayed or not
 let currentDrawingOption = hoverDrawing;
 let currentDrawingListener = 'mouseover'
+let currentGridBox = true; // if true, gridboxes should be displayed
 
 function main() {
     // by default, adds hover drawing event listener
@@ -150,6 +161,7 @@ function main() {
     gridSliderSizing(); // functionality of grid slider
     addHoverOption();
     addClicknDrag();
+    addgridBoxToggle();
 }
 
 main()

@@ -8,6 +8,10 @@
     user-select: none;
 }
 
+.no-borders {
+    border: 0px !important;
+}
+
 .noncolored-square+.noncolored-square {
     border-left: 0;
 }
@@ -20,8 +24,9 @@
 .grid-container {
     display: flex;
     flex-flow: column;
-    height: 600px;
-    width: 600px;
+    height: 700px;
+    width: 700px;
+    border: 1px solid black;
 }
 
 /* positioning of html objects */
