@@ -118,10 +118,10 @@ function hoverDrawing() {
 
 // adds the hover option functionality
 function addHoverOption() {
-    currentDrawingOption = hoverDrawing
-    currentDrawingListener = 'mouseover'
     hoverBtn = document.querySelector('.hover-option');
     hoverBtn.addEventListener('click', () => {
+        currentDrawingOption = hoverDrawing;
+        currentDrawingListener = 'mouseover';
         removeDrawingListenersFromAll(); // first removes all listeners
         squareAddEventListeners('mouseover', hoverDrawing); // then adds hover listeners to all non-colored squares
     });
@@ -129,10 +129,10 @@ function addHoverOption() {
 
 // adds the click-n-drag option functionality
 function addClicknDrag() {
-    currentDrawingOption = clicknDrag;
-    currentDrawingListener = 'mousedown'
     dragBtn = document.querySelector('.click-option');
     dragBtn.addEventListener('mousedown', () => {
+        currentDrawingOption = clicknDrag;
+        currentDrawingListener = 'mousedown';
         removeDrawingListenersFromAll();
         squareAddEventListeners('mousedown', clicknDrag);
     });
@@ -172,19 +172,19 @@ function addManualSize() {
 }
 
 // global variable (respectively) for current drawing option, drawing listener, and whether gridboxes are displayed or not
+// by default, the drawing option is hover
 let currentDrawingOption = hoverDrawing;
 let currentDrawingListener = 'mouseover'
 let currentGridBox = true; // if true, gridboxes should be displayed
 
 function main() {
-    // by default, adds hover drawing event listener
     createGrid(10);
-    gridSliderSizing(); // functionality of grid slider
-    addHoverOption();
-    addClicknDrag();
-    addgridBoxToggle();
-    addEraseBoard();
-    addManualSize();
+    gridSliderSizing(); // adds functionality of grid size slider
+    addManualSize(); // adds grid size manual input 
+    addHoverOption(); // adds hover drawing option btn
+    addClicknDrag(); // adds click-n-drag drawing option btn
+    addgridBoxToggle(); // adds grid box border toggle btn
+    addEraseBoard(); // adds erasing board btn
 }
 
 main()
