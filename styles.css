@@ -1,3 +1,17 @@
+/* aligning and styling */
+body {
+    /* positioning */
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    /* styling */
+    background-color: #F0ECE3;
+    font-family: 'Courier New';
+}
+
 .noncolored-square {
     border: 1px solid #402218;
     background-color: white;
@@ -12,10 +26,6 @@
     border: 0px !important;
 }
 
-.noncolored-square+.noncolored-square {
-    border-left: 0;
-}
-
 .row {
     display: flex;
     flex-grow: 1;
@@ -27,18 +37,9 @@
     height: 705px;
     width: 705px;
     padding: 3px;
+    /* styling */
     background-color: #402218;
-}
-
-/* positioning of html objects */
-
-body {
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+    box-shadow: 20px 20px #C7B198;
 }
 
 .main-container {
@@ -49,15 +50,38 @@ body {
     gap: 8px;
 }
 
+.misc-container,
+.paintbrush-option,
+.grid-slider-container,
+.grid-manual-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
 .non-title {
     display: flex;
-    gap: 10px;
+    gap: 15px;
+}
+
+.size-header{
+    font-size: 20px;
 }
 
 .sidebar {
+    /* positioning */
     display: flex;
     flex-direction: column;
     height: 600px;
+    width: 250px;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+    /* styling */
+    border: 3px solid #402218;
+    box-shadow: -10px 10px #C7B198;
+    padding: 10px;
 }
 
 .size-choicing {
@@ -65,9 +89,45 @@ body {
     flex-direction: column;
 }
 
-/* styling for all objects */
-body{
-    background-color: #F0ECE3;
+.color-choicing {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+}
+
+.paint-label {
+    align-items: center;
+}
+
+#Color {
+    border: 5px solid #402218;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    -webkit-appearance: none;
+}
+
+/* removes the inner border outline */
+#Color::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+button {
+    background-color: #758184;
+    color: #E6E6E6;
+    font-family: 'Courier New';
+    padding: 5px 10px;
+}
+
+button:hover {
+    background-color: #DFD3C3;
+    color: #053742;
+    box-shadow: -3px 3px #C7B198;
+}
+
+button:active {
+    box-shadow: -7px 7px #C7B198;
 }
 
 .title {
@@ -75,5 +135,5 @@ body{
     font-family: 'Courier New';
     border: 3px solid #402218;
     padding: 2px 10px;
-    box-shadow: 5px -10px #C7B198;
+    box-shadow: 5px -5px #C7B198;
 }

@@ -173,6 +173,13 @@ function addManualSize() {
     })
 }
 
+// this updates the color background of the color input
+function updateColorBackground(){
+    color = document.querySelector('#Color');
+    color.style.backgroundColor = color.value;
+    color.style.color = color.value;
+}
+
 // global variable (respectively) for current drawing option, drawing listener, and whether gridboxes are displayed or not
 // by default, the drawing option is hover
 let currentDrawingOption = hoverDrawing;
@@ -180,6 +187,8 @@ let currentDrawingListener = 'mouseover'
 let currentGridBox = true; // if true, gridboxes should be displayed
 
 function main() {
+    updateColorBackground();
+    document.querySelector('#Color').oninput = updateColorBackground;
     createGrid(10);
     gridSliderSizing(); // adds functionality of grid size slider
     addManualSize(); // adds grid size manual input 

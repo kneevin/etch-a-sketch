@@ -15,32 +15,39 @@
             <div class='non-grid-container'>
                 <div class='sidebar'>
                     <div class='color-choicing'>
-                        <label for='Color'>Paint Color</label>
+                        <!-- <label for='Color' class='color-label'>Color</label> -->
                         <input type='color' id='Color'>
                     </div>
-                    <button type='button' class='eraser-btn'>Erase</button>
-                    <button type='button' class='grid-btn'>Borders Toggle</button>
-                    <div class='size-choicing'>
-                        <div class='grid-section'>
-                            <label for='grid-slider'>Grid Size Slider: <a class='slider-preview'>10</a></label>
-                            <input type='range' min='2' max='100' value='10' id='grid-slider'>
-                            <button type='button' class='grid-confirm'>Confirm</button>
+                    <div class='misc-container'>
+                        <div class='grid-options'><strong>Grid Options</strong></div>
+                        <div class='misc-btn-container'>
+                            <button type='button' class='eraser-btn'>Erase</button>
+                            <button type='button' class='grid-btn'>Borders Toggle</button>
                         </div>
-                        <div class='grid-manual-input'>
-                            <label for='grid-number'>Grid Size Manual</label>
-                            <input type='number' id='grid-number'>
+                    </div>
+                    <div class='paintbrush-option'>
+                        <div class='paint-label'><strong>Paintbrush Options</strong></div>
+                        <div class='paintbrush-btns'>
+                            <button type='button' class='hover-option'>Hover</button>
+                            <button type='button' class='click-option'>Click-n-Drag</button>
                         </div>
-                        <div class='size-header'>Current Size: <a class='size-preview'>10</a></div>
                     </div>
-                    <div class='paint-brush-option'>
-                        <div class='paint-label'>Paintbrush Options</div>
-                        <button type='button' class='hover-option'>Hover</button>
-                        <button type='button' class='click-option'>Click-n-Drag</button>
+                    <div class='grid-slider-container'>
+                        <label for='grid-slider'><strong>Grid Size Slider: <a
+                                    class='slider-preview'>10</a></strong></label>
+                        <input type='range' min='2' max='100' value='10' id='grid-slider'>
+                        <button type='button' class='grid-confirm'>Confirm</button>
                     </div>
+                    <div class='grid-manual-input'>
+                        <label for='grid-number'><strong>Grid Size Manual Input</strong></label>
+                        <input type='number' id='grid-number'>
+                    </div>
+                    <div class='size-header'><strong>Current Size: <a class='size-preview'>10</a></strong></div>
+<!-- 
                     <div class='night-mode-btn'>
                         <button type='button' class='night-btn'><img class='night-img' src='night-icon.png'
                                 alt='Night Mode'></button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class='grid-container' draggable="false">
