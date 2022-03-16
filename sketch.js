@@ -92,6 +92,7 @@ function squareAddEventListeners(mouseEvent, eventListener) {
 function clicknDrag() {
     color = document.querySelector('#Color');
     this.style.backgroundColor = color.value;
+    this.style.borderColor = color.value;
     this.classList.add('colored')
     this.removeEventListener('mousedown', clicknDrag)
     // then toggles on the hover
@@ -111,6 +112,7 @@ function hoverDrawing() {
     color = document.querySelector('#Color');
     // console.log(color);
     this.style.backgroundColor = color.value;
+    this.style.borderColor = color.value;
     this.classList.add('colored')
     // console.log(this.classList)
     this.removeEventListener('mouseover', hoverDrawing);
